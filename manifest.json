@@ -1,0 +1,23 @@
+{
+  "manifest_version": 3,
+  "name": "TikTok View History",
+  "version": "1.0.0",
+  "description": "Automatically tracks TikTok videos you view so you can find them later. 100% local, no tracking.",
+  "permissions": ["storage"],
+  "host_permissions": ["https://*.tiktok.com/*"],
+  "background": { "service_worker": "src/background.js", "type": "module" },
+  "content_scripts": [{
+    "matches": ["https://*.tiktok.com/*"],
+    "js": ["src/injector.js"],
+    "run_at": "document_start"
+  }],
+  "action": {
+    "default_popup": "src/popup.html",
+    "default_icon": { "16": "icons/icon16.png", "48": "icons/icon48.png", "128": "icons/icon128.png" }
+  },
+  "icons": { "16": "icons/icon16.png", "48": "icons/icon48.png", "128": "icons/icon128.png" },
+  "web_accessible_resources": [{
+    "resources": ["src/interceptor.js", "src/lib/parser.js"],
+    "matches": ["https://*.tiktok.com/*"]
+  }]
+}
