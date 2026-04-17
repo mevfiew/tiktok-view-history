@@ -6,3 +6,6 @@ node_modules/
 
 # Store submission artifacts — kept local only
 store-assets/
+
+# Internal planning docs — kept local only
+docs/superpowers/
